@@ -10,15 +10,7 @@ const DB_HOST = process.env.DB_HOST;
 
 const db = new Sequelize(DB_NAME, DB_USERNAME, DB_PASS, {
     host: DB_HOST,
-    dialect: "mysql",
-    port: 3306,
-    dialectOptions: {
-        ssl: {
-            rejectUnauthorized: false // <<=== ini kunci anti kabut SSL!
-        }
-    },
-    logging: false,
-});
-
+    dialect:"mysql"
+})
 
 export default db;
