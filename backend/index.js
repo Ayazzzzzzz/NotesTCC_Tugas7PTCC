@@ -8,6 +8,8 @@ import sequelize from "./config/database.js";
 
 dotenv.config();
 
+const app = express();
+
 app.set("view engine", "ejs");
 
 // Daftar origin yang diizinkan
@@ -41,8 +43,7 @@ app.use(cors({
       console.log("Database connected");
       await sequelize.sync();
   
-      const port = process.env.PORT || 5000;
-      app.listen(port, '0.0.0.0', () => console.log(`Server running on port ${port}`));
+      app.listen(5000, '0.0.0.0', () => console.log(`Server running on port 5000`));
     } catch (error) {
       console.error("Unable to connect to the database:", error);
     }
