@@ -12,9 +12,7 @@ const app = express();
 
 app.set("view engine", "ejs");
 
-const allowedOrigins = process.env.NODE_ENV === 'production' 
-  ? ['https://dhea-notes-dot-e-13-450704.uc.r.appspot.com'] 
-  : ['http://localhost'];
+const allowedOrigins = ['https://dhea-notes-dot-e-13-450704.uc.r.appspot.com'] 
 
 console.log("Allowed origins:", allowedOrigins);
 
