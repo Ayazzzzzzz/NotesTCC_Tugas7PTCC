@@ -15,7 +15,7 @@ app.use(
   cors({
     origin: [
   "http://localhost:3000",
-  "https://notesgita-dot-g-07-450802.uc.r.appspot.com"
+  "https://notes-ayazzz-dot-g-07-450802.uc.r.appspot.com"
 ], 
     credentials: true,
   })
