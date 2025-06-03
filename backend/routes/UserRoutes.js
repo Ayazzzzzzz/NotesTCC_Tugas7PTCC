@@ -19,7 +19,7 @@ router.get('/token', refreshToken);
 
 //endpoint utk autentikasi
 router.post('/login', loginHandler);
-router.delete('logout', logout);
+router.delete('/logout', logout);
 
 router.get("/users", verifyToken, getUsers);
 router.get("/users/:id", verifyToken, getUserById);

@@ -11,9 +11,14 @@ const EditNote = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    getNoteById();
+    const token = localStorage.getItem("accessToken");
+    if (!token) {
+      navigate("/login");
+    } else {
+      getNoteById(token);
+    }
   }, []);
-
+  
   const updateNote = async (e) => {
     e.preventDefault();
     try {
@@ -28,7 +33,7 @@ const EditNote = () => {
     }
   };
 
-  const getNoteById = async () => {
+  const getNoteById = async (token) => {
     try {
       const response = await axios.get(`${API_BASE_URL}/Notes/${id}`);
       setJudul(response.data.judul);

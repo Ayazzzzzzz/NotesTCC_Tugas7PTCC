@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { API_BASE_URL } from "../utils";
@@ -9,6 +9,13 @@ const AddNote = () => {
   const [author, setAuthor] = useState("");
   const [isi, setIsi] = useState("");
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("accessToken");
+    if (!token) {
+      navigate("/login");
+    }
+  }, []);
 
   const saveNote = async (e) => {
     e.preventDefault();

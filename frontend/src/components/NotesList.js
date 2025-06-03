@@ -1,18 +1,24 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { API_BASE_URL } from "../utils";
 
 const NoteList = () => {
   const [notes, setNotes] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    getNotes();
+    const token = localStorage.getItem("accessToken");
+    if (!token) {
+      navigate("/login");
+    } else {
+      getNotes(token);
+    }
   }, []);
 
-  const getNotes = async () => {
+  const getNotes = async (token) => {
     try {
-      const response = await axios.get(`${API_BASE_URL}/Notes`);
+      const response = await axios.get(`${API_BASE_URL}/notes`);
       setNotes(response.data);
     } catch (error) {
       console.log(error);
@@ -28,6 +34,22 @@ const NoteList = () => {
     }
   };
 
+  const handleLogout = async () => {
+    try {
+      await axios.delete(
+        `${API_BASE_URL}/logout`,
+        {},
+        {
+          withCredentials: true, // penting supaya cookie refreshToken dikirim
+        }
+      );
+      localStorage.removeItem("accessToken");
+      navigate("/login");
+    } catch (error) {
+      console.error("Logout gagal:", error);
+    }
+  };
+
   return (
     <div className="columns mt-5 is-centered">
       <div className="column is-half">
@@ -36,6 +58,7 @@ const NoteList = () => {
           <Link to="/add" className="button is-success">
             + Add Note
           </Link>
+          <button onClick={handleLogout} className="button is-danger">Logout</button>
         </div>
         <table className="table is-striped is-fullwidth">
           <thead>

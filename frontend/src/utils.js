@@ -1,1 +1,1 @@
-export const API_BASE_URL = "https://tugas6-be-901699795850.us-central1.run.app";
+export const API_BASE_URL = "https://notes-be-ayas-901699795850.us-central1.run.app";
