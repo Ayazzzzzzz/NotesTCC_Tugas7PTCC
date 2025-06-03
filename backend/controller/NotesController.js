@@ -1,4 +1,4 @@
-import Notes from "../models.js/NotesModel.js";
+import Notes from "../models/NotesModel.js";
 
 // GET (Ngambil Data)
 async function getNotes(req, res) {

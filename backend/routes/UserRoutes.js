@@ -7,9 +7,9 @@ import {
   getUserById,
   loginHandler,
   logout
-} from "../controllers/UserController.js";
+} from "../controller/UserController.js";
 
-import { refreshToken } from "../controllers/RefreshToken.js";
+import { refreshToken } from "../controller/RefreshToken.js";
 import { verifyToken } from "../middleware/VerifyToken.js";
 
 const router = express.Router();
