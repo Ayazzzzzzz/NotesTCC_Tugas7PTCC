@@ -5,19 +5,19 @@ steps:
 
   - name: "gcr.io/cloud-builders/docker"
     dir : "backend"
-    args: ["build", "-t", "gcr.io/$PROJECT_ID/tugas6-be", "."]
+    args: ["build", "-t", "gcr.io/$PROJECT_ID/notes-be-ayas", "."]
 
   - name: "gcr.io/cloud-builders/docker"
-    args: ["push", "gcr.io/$PROJECT_ID/tugas6-be"]
+    args: ["push", "gcr.io/$PROJECT_ID/notes-be-ayas"]
 
   - name: "gcr.io/cloud-builders/gcloud"
     args:
       [
         "run",
         "deploy",
-        "tugas6-be",
+        "notes-be-ayas",
         "--image",
-        "gcr.io/$PROJECT_ID/tugas6-be",
+        "gcr.io/$PROJECT_ID/notes-be-ayas",
         "--timeout",
         "1000s",
         "--port",
