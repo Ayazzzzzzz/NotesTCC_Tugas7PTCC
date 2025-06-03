@@ -12,12 +12,9 @@ const app = express();
 
 app.set("view engine", "ejs");
 
-app.use(cors({
-  origin: process.env.NODE_ENV === 'production' 
-    ? ['https://dhea-notes-dot-e-13-450704.uc.r.appspot.com'] 
-    : true,
-  credentials: true
-}));
+const allowedOrigins = process.env.NODE_ENV === 'production' 
+  ? ['https://dhea-notes-dot-e-13-450704.uc.r.appspot.com'] 
+  : ['http://localhost'];
 
 console.log("Allowed origins:", allowedOrigins);
 
