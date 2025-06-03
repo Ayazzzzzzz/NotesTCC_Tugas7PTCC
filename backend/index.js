@@ -13,7 +13,10 @@ app.use(cookieParser());
 
 app.use(
   cors({
-    origin: "https://notesgita-dot-g-07-450802.uc.r.appspot.com",
+    origin: [
+  "http://localhost:3000",
+  "https://notesgita-dot-g-07-450802.uc.r.appspot.com"
+], 
     credentials: true,
   })
 );
