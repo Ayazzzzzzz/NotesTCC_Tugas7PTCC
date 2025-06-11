@@ -1,7 +1,7 @@
 steps:
   # Ngambil data env yg disimpen di cloud storage pake gsuri
   - name: "gcr.io/cloud-builders/gsutil"
-    args: ["cp", "${_ENV}", ".env"]
+    args: ["cp", "gs://larasayo-tcc3/.env", ".env"]
 
   - name: "gcr.io/cloud-builders/docker"
     dir : "backend"
